@@ -16,14 +16,24 @@ function Weather(props) {
         const res = await fetch(path)
         const json = await res.json()
         console.log(json)
-        const temp = json.main.temp
-        const feelsLike = json.main.feels_like
+
+        const cod = json.cod
+        const message = json.message
+        if (cod !== 200) {
+            setData({ cod, message })
+            return
+        }
+
+        const temp = json.main.temp.toFixed(0)
+        const feelsLike = json.main.feels_like.toFixed(0)
         const description = json.weather[0].description
         const name = json.name
         const humidity = json.main.humidity
 
 
         setData({
+            cod,
+            message,
             temp,
             feelsLike,
             description,
