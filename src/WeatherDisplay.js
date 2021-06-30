@@ -1,6 +1,6 @@
 import './WeatherDisplay.css'
 function WeatherDisplay(props) {
-    const { temp, feelsLike, description, name, humidity, cod, message } = props
+    const { temp, feelsLike, description, name, humidity, cod, message } = props.data
 
     if (cod !== 200) {
         return (
