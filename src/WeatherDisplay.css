@@ -1,3 +1,32 @@
+.WeatherDisplay{
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1em;
+    max-width: 350px;
+    background-color: white;
+
+    border: 2px solid black;
+    border-radius: 0.5rem 0.5rem;
+}
+
+.cityName{
+    margin: 0.1rem 0.1rem;
+}
+
+.currentTitle{
+    text-decoration: underline;
+}
+
+
+.WeatherDisplay > p {
+    margin-bottom: 0.2em;
+}
+
+
 .error {
     color: red;
+    font-weight: 800;
 }

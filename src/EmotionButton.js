@@ -1,15 +1,22 @@
 import './EmotionButton.css'
+import { changeColor } from './actions'
+
+import { connect } from 'react-redux'
 
 function EmotionButton(props) {
-    const { setColor } = props
+    const { changeColor } = props
 
     return (
         <div className="EmotionButton">
-            <button onClick={() => setColor('#FDE68A')}>😃</button>
-            <button onClick={() => setColor('#6EE7b7')}>😐</button>
-            <button onClick={() => setColor('#60A5FA')}>😢</button>
+            <h4>How's the weather making you feel?</h4>
+            <div>
+                <button onClick={() => changeColor('linear-gradient(45deg, #fff126, #ffba26)')}>😃</button>
+                <button onClick={() => changeColor('linear-gradient(45deg, #34e89e, #0f3443)')}>😐</button>
+                <button onClick={() => changeColor('linear-gradient(45deg, #373b44, #4286f4)')}>😢</button>
+            </div>
         </div>
     )
 }
 
-export default EmotionButton
+
+export default connect(null, { changeColor })(EmotionButton)

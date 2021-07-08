@@ -1,7 +1,9 @@
-import { GET_CURRENT_WEATHER, GET_FORECAST } from '../actions'
+import { GET_CURRENT_WEATHER, GET_FORECAST, SET_COLOR } from '../actions'
 
 const INITIAL_STATE = {
-    data: null
+    data: null,
+    forecastData: null,
+    color: '#fff'
 }
 
 
@@ -11,13 +13,18 @@ const weatherReducer = (state = INITIAL_STATE, action) => {
             return { ...state, data: action.payload }
         }
         case GET_FORECAST: {
-            return { ...state, data: action.payload }
+            return { ...state, forecastData: action.payload }
+        }
+        case SET_COLOR: {
+            return { ...state, color: action.payload }
         }
 
         default:
             return state
     }
 }
+
+
 
 
 export default weatherReducer

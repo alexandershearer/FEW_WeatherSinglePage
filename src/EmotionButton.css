@@ -6,3 +6,15 @@
     margin: 0 10px;
     font-size: x-large;
 }
+
+.EmotionButton button:hover{
+    cursor: pointer;
+}
+
+.EmotionButton {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1rem;
+}

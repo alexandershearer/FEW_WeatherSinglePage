@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './Weather.css'
 import WeatherDisplay from './WeatherDisplay'
+import ForecastDisplay from './ForecastDisplay'
 import EmotionButton from './EmotionButton'
 
 import { currentWeather, getForecast } from './actions'
@@ -9,34 +10,34 @@ import { connect } from 'react-redux'
 
 function Weather(props) {
     const [zip, setZip] = useState('')
-    const { data, currentWeather, getForecast } = props
-
+    const { data, forecastData, currentWeather, getForecast, color } = props
     return (
 
-        <div className='Weather'>
+        <div className='Weather' style={{ backgroundImage: color }}>
 
-            <div>
+            <div className="inputContainer">
                 <input
                     placeholder='Enter zip code'
                     value={zip}
                     onChange={e => setZip(e.target.value)} />
-                <button onClick={() => currentWeather(zip)}>Submit</button>
+                <div className='inputButtons'>
+                    <button onClick={() => currentWeather(zip)}>Get Current Weather</button>
+                    <button onClick={() => getForecast(zip)}>Get 7-day Forecast</button>
+                </div>
             </div>
 
             {data && <WeatherDisplay data={data} />}
 
-            <button></button>
+            {forecastData && <ForecastDisplay data={forecastData} />}
 
-
-            <h4>How's the weather making you feel?</h4>
-            <EmotionButton setColor={props.setColor} />
+            <EmotionButton />
         </div>
     )
 }
 
 const mapStateToProps = ({ weather }) => {
-    const { data } = weather
-    return { data }
+    const { data, forecastData, color } = weather
+    return { data, forecastData, color }
 }
 
 export default connect(mapStateToProps, { currentWeather, getForecast })(Weather)
